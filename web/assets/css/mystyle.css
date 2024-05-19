@@ -1,0 +1,20 @@
+.my-header-bg{
+    background-color: #b3ff66 !important;
+}
+.nav-bg{
+    background-color: #40bf80;
+}
+.register-btn{
+    
+    margin-top: 100px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    margin-left: 100px;
+}
+.login-btn{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.nav-border{
+    border-radius: 10px;
+}

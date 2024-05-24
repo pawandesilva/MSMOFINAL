@@ -60,7 +60,7 @@ include '../functions.php';
 
                         <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" role="form">
                             <div>
-                                <input type="text" class="w-100 form-control border-0 py-3 mb-4 " name="User Name" id="username" placeholder="User Name" required>
+                                <input type="text" class="w-100 form-control border-0 py-3 mb-4 " name="username" id="username" placeholder="User Name" required>
                                 <div>
 
                                     <div>

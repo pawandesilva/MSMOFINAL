@@ -1,4 +1,7 @@
 <?php
+if(session_status()==PHP_SESSION_NONE){
+    session_start();
+}
 //if session not set
 
   if(!isset($_SESSION['USERID'])){

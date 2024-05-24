@@ -91,7 +91,7 @@ session_start();
                                 ?>
                             
                             <li><a class="getstarted scrollto register-btn btn-warning btn-lg" href="register.php"> Register </a></li>
-                            <li> <a class="getstarted scrollto my-header-bg login-btn btn-success btn-lg" href="login.php">Login</a></li>
+                            <li> <a class="getstarted scrollto  login-btn btn-success btn-lg" href="login.php">Login</a></li>
                             
                             <?php
                             

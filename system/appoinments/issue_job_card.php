@@ -8,6 +8,8 @@ $link = "Appointments Management";
 $breadcrumb_item = "Appointments";
 $breadcrumb_item_active = "Issue Job Card";
 
+extract($_GET);
+
 $qr_path = '../../qr/';
 
 if (!file_exists($qr_path))
@@ -16,7 +18,7 @@ if (!file_exists($qr_path))
 $errorCorrectionLevel = 'L';
 $matrixPointSize = 4;
 
-$data = $appoinmentid;
+$data = $appointment_id;
 $filename = $qr_path . 'test' . md5($data . '|' . $errorCorrectionLevel . '|' . $matrixPointSize) . '.png';
 
 QRcode::png($data, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
@@ -168,7 +170,7 @@ include '../layouts.php';
     //print function
     function printContent() {
         var content = document.getElementById("contentToPrint").innerHTML;
-        var originalBody = docuument.body.innerHTML;
+        var originalBody = document.body.innerHTML;
         document.body.innerHTML = content;
         window.print();
         document.body.innerHTML = originalBody;

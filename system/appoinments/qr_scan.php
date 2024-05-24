@@ -8,9 +8,9 @@ $breadcrumb_item = "Appointments";
 $breadcrumb_item_active = "Scan QR";
 
 extract($_GET);
-if(!empty($appoinmentid)){
+if(!empty($appointment_id)){
     $db = dbConn();
-    $sql = "Select appoinments.id, customers.FirstName,customers.LastName,customers.Email,customers.MobileNo,appoinments.date,appoinments.startTime,appoinments.endTime FROM appoinments INNER JOIN customers ON appoinments.CustomerId=customers.CustomerId WHERE appoinments.id='$appoinmentid'";
+    $sql = "Select appoinments.id, customers.FirstName,customers.LastName,customers.Email,customers.MobileNo,appoinments.date,appoinments.startTime,appoinments.endTime FROM appoinments INNER JOIN customers ON appoinments.CustomerId=customers.CustomerId WHERE appoinments.id='$appointment_id'";
     $result = $db->query($sql);
 }
 ?> <!-- link qr scan library -->
@@ -94,7 +94,7 @@ include '../layouts.php';
     
         
     //stop the camera
-    function stopscan(){
+    function stopScan(){
         const video = document.querySelector('video');
         const mediaStream = video.srcObject;
         const tracks = mediaStream.getTracks();// check the no of camera
@@ -104,7 +104,7 @@ include '../layouts.php';
     
     //pass the scanned content from qr using find appointment function
     
-        function findAppointment(appointmentid){
+        function findAppointment(appointmentId){
         window.location.href ="http://localhost/MSMOFINAL/system/appointments/qr_scan.php?appointmentid="+appoinmentid
     }
       

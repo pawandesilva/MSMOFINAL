@@ -62,7 +62,7 @@ $breadcrumb_item_active = "Manage";
                             <td><?= $row['date']?></td>
                             <td><?= $row['startTime']?></td>
                             <td><?= $row['endTime']?></td>
-                            <td><a href="<?= SYS_URL ?>appoinments/issue_jobcard.php?appointment_id=<?= $row['id'] ?>" class="btn btn-warning"><i class="fas fa-calendar"></i> Issue Job Card</a></td>
+                            <td><a href="<?= SYS_URL ?>appoinments/issue_job_card.php?appointment_id=<?= $row['id'] ?>" class="btn btn-warning"><i class="fas fa-calendar"></i> Issue Job Card</a></td>
                             
                             
                         </tr>

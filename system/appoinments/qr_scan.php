@@ -9,7 +9,7 @@ $breadcrumb_item_active = "Scan QR";
 
 extract($_GET);
 if(!empty($appointment_id)){
-    $db = dbConn();
+    $db = dbConn();//
     $sql = "Select appoinments.id, customers.FirstName,customers.LastName,customers.Email,customers.MobileNo,appoinments.date,appoinments.startTime,appoinments.endTime FROM appoinments INNER JOIN customers ON appoinments.CustomerId=customers.CustomerId WHERE appoinments.id='$appointment_id'";
     $result = $db->query($sql);
 }

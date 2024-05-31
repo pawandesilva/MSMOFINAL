@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include 'header.php';
 include '../functions.php';
 ?>
@@ -77,4 +78,5 @@ include '../functions.php';
                 </div>
                 <?php
                 include 'footer.php';
+                ob_end_flush();
                 ?>

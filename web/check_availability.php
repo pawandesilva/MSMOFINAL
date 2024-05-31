@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 include 'header.php';
 include '../functions.php';
 ?>
@@ -41,4 +41,5 @@ include '../functions.php';
 
 <?php
 include 'footer.php';
+ob_end_flush();
 ?>

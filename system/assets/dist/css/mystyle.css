@@ -5,8 +5,59 @@
     background-color: #5E8C31 ;
 }
 .card-custom {
-  background-color: #D8C897;
-  
+    background-color: #D8C897;
+
+}
+/*** Button Start ***/
+.btn {
+    font-weight: 600;
+    transition: .5s;
 }
 
-    
+.btn-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-sm-square {
+    width: 34px;
+    height: 34px;
+}
+
+.btn-md-square {
+    width: 44px;
+    height: 44px;
+}
+
+.btn-lg-square {
+    width: 56px;
+    height: 56px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-md-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+.btn.border-secondary {
+    transition: 0.5s;
+}
+
+.btn.border-secondary:hover {
+    background: var(--bs-secondary) !important;
+    color: var(--bs-white) !important;
+}
+
+.card-title-large {
+    font-size: 2rem; /* Adjust the size as needed */
+}
+.card-img {
+    width: 100%; /* Make the image responsive */
+    height: 100%; /* Maintain aspect ratio */
+}

@@ -94,7 +94,7 @@ include '../layouts.php';
     
         
     //stop the camera
-    function stopScan(){
+    function stopscan(){
         const video = document.querySelector('video');
         const mediaStream = video.srcObject;
         const tracks = mediaStream.getTracks();// check the no of camera

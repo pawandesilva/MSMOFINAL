@@ -19,6 +19,7 @@ session_start();
         <!-- Icon Font Stylesheet -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 
         <!-- Libraries Stylesheet -->
         <link href="assets/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
@@ -90,7 +91,7 @@ session_start();
                             }else{
                                 ?>
                             
-                            <li><a class="getstarted scrollto register-btn btn-warning btn-lg" href="register.php"> Register </a></li>
+                            <li><a class="getstarted scrollto register-btn btn-warning btn-lg" href="main_register.php"> Register </a></li>
                             <li> <a class="getstarted scrollto  login-btn btn-success btn-lg" href="login.php">Login</a></li>
                             
                             <?php

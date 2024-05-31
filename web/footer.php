@@ -63,7 +63,7 @@
                             <p>Email: Example@gmail.com</p>
                             <p>Phone: +0123 4567 8910</p>
                             <p>Payment Accepted</p>
-                            <img src="img/payment.png" class="img-fluid" alt="">
+                            <img src="assets/img/payment.png" class="img-fluid" alt="">
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
     <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main_1.js"></script>
     </body>
 
 </html>

@@ -97,7 +97,7 @@
         <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
 
         <!-- Template Javascript -->
-        <script src="assets/js/main.js"></script>
+        <script src="assets/js/main_1.js"></script>
     </body>
 
 </html>

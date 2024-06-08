@@ -8,7 +8,7 @@ $breadcrumb_item_active = "manage";
 ?>
 
 
-<div class="row col-md-8">
+<div class="row col-md-10">
     <div class="col-sm-4 mb-3 mb-sm-1">
         <div class="card">
             <div class="card-body">
@@ -18,9 +18,9 @@ $breadcrumb_item_active = "manage";
 
 
 
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text"></p>
                 <img class="card-img" src="../assets/dist/img/credit/Form-16.png" alt=""/>
-                <a href="purchasing_order.php" <div class="text-center"><button type="submit"  class="btn border border-1 border-dark btn-warning w-50 mt-3 align-center">Create Purchase Order</button></a>
+                <a href="purchasing_order.php" <div class="text-center"><button type="submit"  class="btn border border-1 border-dark btn-warning w-100 mt-3 align-center">Create Purchase Order</button></a>
 
             </div>
         </div>
@@ -34,10 +34,28 @@ $breadcrumb_item_active = "manage";
 
 
 
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text"></p>
                 
                 <img class="card-img img-content-fluid" src="../assets/dist/img/credit/order-inquiry-3.png" alt=""/>
-                <a href="purchasing_order.php" <div class="text-center"><button type="submit"  class="btn border border-1 border-dark btn-success  mt-3 align-center">View Orders</button></a>
+                <a href="view_purchasing_orders.php" <div class="text-center"><button type="submit"  class="btn border border-1 border-dark btn-info w-100  mt-3 align-center">View Orders</button></a>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 mb-3 mb-sm-1">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title  card-title-large">Approve Orders</h1>
+
+
+
+
+
+                <p class="card-text"></p>
+                
+                <img class="card-img img-content-fluid" src="../assets/dist/img/approve.jpg" alt=""/>
+                <img src="" alt=""/>
+                <a href="approve_po.php" <div class="text-center"><button type="submit"  class="btn border border-1 border-dark btn-success w-100  mt-3 align-center">Approve Orders</button></a>
 
             </div>
         </div>

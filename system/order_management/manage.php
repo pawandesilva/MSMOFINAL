@@ -37,7 +37,7 @@ $breadcrumb_item_active = "manage";
                 <p class="card-text"></p>
                 
                 <img class="card-img img-content-fluid" src="../assets/dist/img/credit/order-inquiry-3.png" alt=""/>
-                <a href="view_purchasing_orders.php" <div class="text-center"><button type="submit"  class="btn border border-1 border-dark btn-info w-100  mt-3 align-center">View Orders</button></a>
+                <a href="display_po.php" <div class="text-center"><button type="submit"  class="btn border border-1 border-dark btn-info w-100  mt-3 align-center">View Orders</button></a>
 
             </div>
         </div>

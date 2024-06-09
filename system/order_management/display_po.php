@@ -4,7 +4,7 @@ session_start(); //session_start() creates a session or resumes the current one 
 include_once '../init.php';
 $link = "Order Management";
 $breadcrumb_item = "Order Management";
-$breadcrumb_item_active = "Approve purchasing order";
+$breadcrumb_item_active = "Display purchasing order";
 ?>
 
 
@@ -13,7 +13,7 @@ $breadcrumb_item_active = "Approve purchasing order";
         
         <div class="card">
             <div class="card-header  ">
-                <h3 class="card-title font-weight-bold">Approve Purchasing Orders</h3>
+                <h3 class="card-title font-weight-bold">Display Purchasing Orders</h3>
 
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
@@ -31,7 +31,7 @@ $breadcrumb_item_active = "Approve purchasing order";
             <div class="card-body table-responsive p-0">
                 <?php
                 $db= dbConn();
-                $sql= "SELECT purchasing_orders.OrderId, purchasing_orders.OrderName , suppliers.FirstName , purchasing_orders.DiliveryDate , purchasing_orders.DueDate  FROM msmo.purchasing_orders INNER JOIN msmo.suppliers ON purchasing_orders.SupplierId = suppliers.SupplierId ORDER BY purchasing_orders.DueDate" ;
+                $sql= "SELECT purchasing_orders.OrderId, purchasing_orders.OrderName , suppliers.FirstName , purchasing_orders.DiliveryDate , purchasing_orders.DueDate, purchasing_orders.Status  FROM msmo.purchasing_orders INNER JOIN msmo.suppliers ON purchasing_orders.SupplierId = suppliers.SupplierId ORDER BY purchasing_orders.DueDate" ;
                 $result= $db->query($sql);
                 
                 ?>
@@ -43,6 +43,7 @@ $breadcrumb_item_active = "Approve purchasing order";
                             <th>Supplier</th>
                             <th>Delivery Date</th>
                             <th>Due Date</th>
+                            <th>Status</th>
 
                             
                             <th></th>
@@ -59,10 +60,10 @@ $breadcrumb_item_active = "Approve purchasing order";
                             <td><?= $row['FirstName']?></td>
                             <td><?= $row['DiliveryDate']?></td>
                             <td><?= $row['DueDate']?></td>
+                            <td><?= $row['Status']?></td>
                             
                             <td><a href="<?= SYS_URL ?>order_management/view_purchasing_orders.php?orderid=<?= $row['OrderId']?>" class="btn btn-info"><i class="fas fa-eye"></i>   view</a></td>
-                            <td><a href="<?= SYS_URL ?>order_management/approve_purchasing_orders.php?orderid=<?= $row['OrderId']?>" class="btn btn-success"><i class="fas fa-check-circle"></i>   Approve</a></td>
-                            <td><a href="<?= SYS_URL ?>order_management/reject_purchasing_orders.php?orderid=<?= $row['OrderId']?>"" class="btn btn-danger"><i class="fas fa-times-circle"></i>   Reject</a></td>
+                            
                             
                             
                         </tr>

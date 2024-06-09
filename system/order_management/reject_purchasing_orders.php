@@ -70,7 +70,7 @@ QRcode::png($data, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
                             $sql = "SELECT s.FirstName, s.CompanyName, s.AddressLine1, s.AddressLine2, s.AddressLine3, s.Email, s.MobileNo, s.RegNo 
                     FROM suppliers s 
                     INNER JOIN purchasing_orders po ON s.SupplierId = po.SupplierId 
-                    WHERE po.OrderId = '$orderid';";
+                    WHERE po.OrderId = 4;";
                             $result = $db->query($sql);
                             ?>
                             <?php
@@ -117,7 +117,7 @@ QRcode::png($data, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
                                     <b>Order ID:</b> <?= $row['OrderId'] ?><br>
                                     <b>Order Due Date:</b> <?= $row['DueDate'] ?><br>
                                     <b>Payment Method:</b> <?= $row['PaymentMethod'] ?><br>
-                                    <b>Status:<?= $row['Status']=='1'?'Approved':'' ?></b> <br>
+                                    <b>Status:<?= $row['Status']?></b> <br>
                                     <?php
                                 }
                             }
@@ -195,8 +195,8 @@ QRcode::png($data, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
                             </button>
                             <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                                 <input type="hidden" class="form-control"  value="<?= $orderid ?>" id="orderid" name="orderid" >
-                                 <input type="hidden" class="form-control"  value="1" id="status" name="status" >
-                                 <br>  <button type="submit"  class="btn btn-success">  Confirm Approval</button>
+                                 <input type="hidden" class="form-control"  value="2" id="status" name="status" >
+                                 <br><button type="submit"  class="btn btn-danger">  Confirm Reject </button>
                             </form>
                             
                             </div>

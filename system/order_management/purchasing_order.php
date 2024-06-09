@@ -24,6 +24,7 @@ $breadcrumb_item_active = "purchasing order";
                             $order_name = dataClean($order_name);
 
                             $description = dataClean($description);
+                            $order_id =$row ['OrderId'];
 
                             //required validation------------------------------
                             if (empty($order_name)) {

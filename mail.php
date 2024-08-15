@@ -33,8 +33,8 @@ function sendEmail($recipient = null, $recipient_name = null, $subject = null, $
 
         // Set your Gmail credentials
         $mail->SMTPAuth = true;
-        $mail->Username = 'bitprojectclass@gmail.com'; // Your Gmail address
-        $mail->Password = 'lctqxaoxacgoaxua'; // Your Gmail password
+        $mail->Username = 'pawanapsara2000@gmail.com'; // Your Gmail address
+        $mail->Password = ''; // Your Gmail password
         // Set the 'from' address and recipient
         $mail->setFrom('your@gmail.com', 'Your Name');
         $mail->addAddress($recipient, $recipient_name);

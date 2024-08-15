@@ -60,7 +60,7 @@ $breadcrumb_item_active = "Approve purchasing order";
                             <td><?= $row['DiliveryDate']?></td>
                             <td><?= $row['DueDate']?></td>
                             
-                            <td><a href="<?= SYS_URL ?>order_management/view_purchasing_orders.php?orderid=<?= $row['OrderId']?>" class="btn btn-info"><i class="fas fa-eye"></i>   view</a></td>
+                            <td><a href="<?= SYS_URL ?>order_management/checked_purchasing_order.php?orderid=<?= $row['OrderId']?>" class="btn btn-info"><i class="fas fa-eye"></i>   view</a></td>
                             <td><a href="<?= SYS_URL ?>order_management/approve_purchasing_orders.php?orderid=<?= $row['OrderId']?>" class="btn btn-success"><i class="fas fa-check-circle"></i>   Approve</a></td>
                             <td><a href="<?= SYS_URL ?>order_management/reject_purchasing_orders.php?orderid=<?= $row['OrderId']?>"" class="btn btn-danger"><i class="fas fa-times-circle"></i>   Reject</a></td>
                             

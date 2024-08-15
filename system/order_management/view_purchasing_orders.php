@@ -193,11 +193,7 @@ QRcode::png($data, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
                             <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                             <i class="fas fa-download"></i> Generate PDF
                             </button>
-                            <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-                                <input type="hidden" class="form-control"  value="<?= $orderid ?>" id="orderid" name="orderid" >
-                                 <input type="hidden" class="form-control"  value="1" id="status" name="status" >
-                                 <br>  <button type="submit"  class="btn btn-success">  Confirm Approval</button>
-                            </form>
+                            
                             
                             </div>
                             </div>

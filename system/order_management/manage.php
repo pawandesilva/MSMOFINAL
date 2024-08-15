@@ -7,65 +7,37 @@ $breadcrumb_item = "Order Management";
 $breadcrumb_item_active = "manage";
 ?>
 
-
-<div class="row col-md-10">
-    <div class="col-sm-4 mb-3 mb-sm-1">
-        <div class="card">
-            <div class="card-body">
-                <h1 class="card-title  card-title-large">Purchsing Orders</h1>
-
-
-
-
-
-                <p class="card-text"></p>
-                <img class="card-img" src="../assets/dist/img/credit/Form-16.png" alt=""/>
-                <a href="purchasing_order.php" <div class="text-center"><button type="submit"  class="btn border border-1 border-dark btn-warning w-100 mt-3 align-center">Create Purchase Order</button></a>
-
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4 mb-3 mb-sm-1">
-        <div class="card">
-            <div class="card-body">
-                <h1 class="card-title  card-title-large">View Orders</h1>
-
-
-
-
-
-                <p class="card-text"></p>
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+                <h2 class="text-center "><strong>Purchase Orders</strong></h2>
+                <div class="text-center ">
+                    <a href="managePO.php">
+                        <button type="button" class="btn border border-1 border-dark btn-warning w-100 "><strong>Manage</strong></button>
+                    </a>
+                </div>
+                <img class="card-img mb-3 mt-auto" src="../assets/dist/img/credit/purchaseorder.png" alt="Purchase Orders"/>
                 
-                <img class="card-img img-content-fluid" src="../assets/dist/img/credit/order-inquiry-3.png" alt=""/>
-                <a href="display_po.php" <div class="text-center"><button type="submit"  class="btn border border-1 border-dark btn-info w-100  mt-3 align-center">View Orders</button></a>
-
             </div>
         </div>
     </div>
-    <div class="col-sm-4 mb-3 mb-sm-1">
-        <div class="card">
-            <div class="card-body">
-                <h1 class="card-title  card-title-large">Approve Orders</h1>
-
-
-
-
-
-                <p class="card-text"></p>
+    <div class="col-md-6 mb-3">
+        <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+                <h2 class="text-center "><strong>Product Orders</strong></h2>
+                <div class="text-center ">
+                    <a href="Manage_O.php">
+                        <button type="button" class="btn border border-1 border-dark btn-info w-100 "><strong>Manage</strong></button>
+                    </a>
+                </div>
+                <img class="card-img img-content-fluid mb-3" src="../assets/dist/img/credit/20943858.jpg" alt="Product Orders"/>
                 
-                <img class="card-img img-content-fluid" src="../assets/dist/img/approve.jpg" alt=""/>
-                <img src="" alt=""/>
-                <a href="approve_po.php" <div class="text-center"><button type="submit"  class="btn border border-1 border-dark btn-success w-100  mt-3 align-center">Approve Orders</button></a>
-
             </div>
         </div>
     </div>
 </div>
 
-</div>
-<div class="col-md-8">
-</div>
-</div>
 <?php
 $content = ob_get_clean();
 include '../layouts.php'; //lay out file in out 2 steps behind

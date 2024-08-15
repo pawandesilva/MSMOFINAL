@@ -1,14 +1,12 @@
 <?php
-if(session_status()==PHP_SESSION_NONE){
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 //if session not set
 
-  if(!isset($_SESSION['USERID'])){
-  header("Location:login.php");
-  }
-
- 
+if (!isset($_SESSION['USERID'])) {
+    header("Location:login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +28,9 @@ if(session_status()==PHP_SESSION_NONE){
         <!-- JQVMap -->
         <link rel="stylesheet" href="<?= SYS_URL ?>assets/plugins/jqvmap/jqvmap.min.css">
         <!-- Theme style -->
+        <link rel="stylesheet" href="<?= SYS_URL ?>assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="<?= SYS_URL ?>assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+        <link rel="stylesheet" href="<?= SYS_URL ?>assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
         <link rel="stylesheet" href="<?= SYS_URL ?>assets/dist/css/adminlte.min.css">
         <!-- overlayScrollbars -->
         <link rel="stylesheet" href="<?= SYS_URL ?>assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
@@ -37,13 +38,15 @@ if(session_status()==PHP_SESSION_NONE){
         <link rel="stylesheet" href="<?= SYS_URL ?>assets/plugins/daterangepicker/daterangepicker.css">
         <!-- summernote -->
         <link rel="stylesheet" href="<?= SYS_URL ?>assets/plugins/summernote/summernote-bs4.min.css">
+         <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
 
             <!-- Preloader -->
-            <div class="preloader flex-column justify-content-center align-items-center">
-                <img class="animation__shake" src="<?= SYS_URL ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+            <div class="preloader flex-column justify-content-center align-items-center" style="color:#90D26D">
+
+                <img class="animation__shake" src="<?= SYS_URL ?>assets/dist/img/credit/logo.jpg" alt="Logo" height="100" width="150">
             </div>
             <!-- Navbar -->
             <nav class="main-header navbar navbar-expand navbar-success navbar-light ">
@@ -53,7 +56,7 @@ if(session_status()==PHP_SESSION_NONE){
                         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a href="index3.html" class="nav-link">Home</a>
+                        <a href="dashboard.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
                         <a href="#" class="nav-link">Contact</a>
@@ -176,7 +179,7 @@ if(session_status()==PHP_SESSION_NONE){
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-outline-danger  mb-2 font-weight-bold rounded-3 "  href="<?= SYS_URL ?>login.php" role="button">
-                            
+
                             Logout
                         </a>
                     </li>
@@ -187,7 +190,7 @@ if(session_status()==PHP_SESSION_NONE){
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
                 <!-- Brand Logo -->
                 <a href="index3.html" class="brand-link">
-                    <img src="<?= SYS_URL ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                    <img src="<?= SYS_URL ?>assets/dist/img/credit/logo.jpg" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                     <span class="brand-text font-weight-light">MSMO</span>
                 </a>
 
@@ -214,26 +217,35 @@ if(session_status()==PHP_SESSION_NONE){
                             </div>
                         </div>
                     </div>
+
                     <?php
+                    //create the dynamic menu
                     $userid = $_SESSION['USERID'];
                     $db = dbConn();
                     $sql = "SELECT * FROM user_modules um INNER JOIN modules m ON m.Id=um.ModuleId WHERE um.UserId='$userid' AND m.Status='1' ORDER BY Idx ASC";
                     $result = $db->query($sql);
+
+                    $current_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; //take the current url which clicked
+                    $url_without_file = preg_replace('/\/[^\/]*$/', '', $current_url); //remove last file name
                     ?>
 
 
                     <!-- Sidebar Menu -->
                     <nav class="mt-2 ">
-                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false">
                             <li class=""">
-                            <?php
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    ?>
+                                <?php
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
 
-                                    <li class="nav-item">
-                                        
-                                        <a href="<?= SYS_URL ?><?= $row['Path'] ?>/<?= $row['File'] ?>.php" class="nav-link">
+                                        $menu_url = SYS_URL . $row['Path'] . '/' . $row['File'] . '.php';
+                                        $menu_url_without_file = preg_replace('/\/[^\/]*$/', '', $menu_url);
+                                        $active_class = ($url_without_file == $menu_url_without_file ) ? 'active' : ''; //compare url without file with menu url without file
+                                        ?>
+
+                                    <li class="nav-item ">
+
+                                        <a href="<?= $menu_url ?>" class="nav-link  <?= $active_class ?>">
                                             <i class="nav-icon <?= $row["Icon"] ?>"></i>
                                             <p>
                                                 <?= $row['Name'] ?>
@@ -245,7 +257,7 @@ if(session_status()==PHP_SESSION_NONE){
                                 }
                             }
                             ?>
-                        
+
                         </ul>
                     </nav>
                     <!-- /.sidebar-menu -->
@@ -323,6 +335,21 @@ if(session_status()==PHP_SESSION_NONE){
     <!-- overlayScrollbars -->
     <script src="<?= SYS_URL ?>assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
+    <!-- DataTables  & Plugins -->
+    <script src="<?= SYS_URL ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= SYS_URL ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= SYS_URL ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?= SYS_URL ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="<?= SYS_URL ?>assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="<?= SYS_URL ?>assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="<?= SYS_URL ?>assets/plugins/jszip/jszip.min.js"></script>
+    <script src="<?= SYS_URL ?>assets/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="<?= SYS_URL ?>assets/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="<?= SYS_URL ?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="<?= SYS_URL ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="<?= SYS_URL ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+
     <script src="<?= SYS_URL ?>assets/dist/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?= SYS_URL ?>assets/dist/js/demo.js"></script>

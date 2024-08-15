@@ -36,7 +36,7 @@ $breadcrumb_item_active = "Manage";
                 $result= $db->query($sql);
                 
                 ?>
-                <table class="table table-hover text-nowrap">
+                <table id="appoinments" class="table table-hover text-nowrap">
                     <thead>
                         <tr>
                             <th>First Name</th>
@@ -83,3 +83,20 @@ $breadcrumb_item_active = "Manage";
 $content = ob_get_clean();
 include '../layouts.php';
 ?>
+<script>
+  $(function () {
+    $("#appoinments").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#appoinments_wrapper .col-md-6:eq(0)');
+    $('#appoinments').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>

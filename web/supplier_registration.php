@@ -44,8 +44,6 @@ include '../functions.php'; //one upon the web file the function file exist
                         }
                         if (empty($area_of_expertise)) {
                             $message['area_of_expertise'] = "Area of expertise  is required..!";
-                        
-                        
                             
                         }if (empty($reg_date)) {
                             $message['reg_date'] = "Date  is required..!";
@@ -57,7 +55,6 @@ include '../functions.php'; //one upon the web file the function file exist
                         if (empty($password)) {
                             $message['password'] = "Password is required..!";
                         }
-
 
                         //Advanced validation----------------------------------------------------
 
@@ -100,7 +97,8 @@ include '../functions.php'; //one upon the web file the function file exist
                             $specialChars = preg_match('@[^\w]@', $password);
 
                             if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
-                                $message['password'] = 'Password should be at least 8 characters in length and should include at least one uppercase letter, one lowercase letter, one number, and one special character.';
+                                $message['password'] = 'Password should be at least 8 characters in length and should'
+                                        . ' include at least one uppercase letter, one lowercase letter, one number, and one special character.';
                             }
                         }
 
@@ -108,14 +106,19 @@ include '../functions.php'; //one upon the web file the function file exist
                             //use bcrypt hashing algorithm
                             $pw = password_hash($password, PASSWORD_DEFAULT);
                             $db = dbConn();
-                            $sql = "INSERT INTO users(UserName,Password,UserType) VALUES('$user_name','$pw','supplier')"; //supplier login with supplier register form                            $db->query($sql);
+                             $sql = "INSERT INTO users(UserName,Password,UserType) VALUES('$user_name','$pw','supplier')"; //supplier login with supplier register form                           
+                            $db->query($sql);
                             $user_id = $db->insert_id;
 
                             //generate registrationno
-                            $reg_number =   date('Y') . date('m') . date('d') . $user_id;
+                            $reg_number =   'S'.date('Y') . date('m') . date('d') . $user_id;
                             $_SESSION['RNO'] = $reg_number;
-                            echo $sql = "INSERT INTO `suppliers`( `FirstName`, `LastName`, `CompanyName`, `Email`, `AddressLine1`, `AddressLine2`, `AddressLine3`, `TelNo`, `MobileNo`, `BusinessType`, `DistrictId`, `AreaOfExpertise`, `CertificationsQualifications`, `AdditionalInformation`, `RegDate`, `RegNo`, `UserId`)"
-                                    . " VALUES ('$first_name','$last_name','$company_name','$email','$address_line1','$address_line2','$address_line3','$telno','$mobile_no','$business_type','$district','$area_of_expertise','$certifications_qualifications','$additional_info','$reg_date','$reg_number','$user_id')";
+                             $sql = "INSERT INTO `suppliers`( `FirstName`, `LastName`, `CompanyName`, `Email`, `AddressLine1`, `AddressLine2`,"
+                                     . " `AddressLine3`, `TelNo`, `MobileNo`, `BusinessType`, `DistrictId`, `AreaOfExpertise`, "
+                                     . "`CertificationsQualifications`, `AdditionalInformation`, `RegDate`, `RegNo`, `UserId`)"
+                                    . " VALUES ('$first_name','$last_name','$company_name','$email','$address_line1',"
+                                     . "'$address_line2','$address_line3','$telno','$mobile_no','$business_type','$district',"
+                                     . "'$area_of_expertise','$certifications_qualifications','$additional_info','$reg_date','$reg_number','$user_id')";
                             $db->query($sql);
                             $msg = "<h1>SUCCESS</h1>";
                             $msg = "<h1>Congratulations!!</h1>";

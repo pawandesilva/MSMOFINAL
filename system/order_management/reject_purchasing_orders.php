@@ -53,8 +53,8 @@ QRcode::png($data, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
                     </div>
                     <div class="col-4 text-right">
                         <?= '<img src="' . $qr_path . basename($filename) . '" width="100" height="100"/>'; ?><br>
-                        style="display: block; margin-top: 10px;">Date: <?= date('Y/m/d') ?>
-                            </div>
+                        <span style="display: block; margin-top: 10px;">Date: <?= date('Y/m/d') ?></span>
+                    </div>
                             </div>
 
 
@@ -70,7 +70,7 @@ QRcode::png($data, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
                             $sql = "SELECT s.FirstName, s.CompanyName, s.AddressLine1, s.AddressLine2, s.AddressLine3, s.Email, s.MobileNo, s.RegNo 
                     FROM suppliers s 
                     INNER JOIN purchasing_orders po ON s.SupplierId = po.SupplierId 
-                    WHERE po.OrderId = 4;";
+                    WHERE po.OrderId = '$orderid';";
                             $result = $db->query($sql);
                             ?>
                             <?php
@@ -117,7 +117,8 @@ QRcode::png($data, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
                                     <b>Order ID:</b> <?= $row['OrderId'] ?><br>
                                     <b>Order Due Date:</b> <?= $row['DueDate'] ?><br>
                                     <b>Payment Method:</b> <?= $row['PaymentMethod'] ?><br>
-                                    <b>Status:<?= $row['Status']?></b> <br>
+                                    <b>Status:<?= $row['Status']=='2'?'Rejected':''?></b> 
+                                    
                                     <?php
                                 }
                             }
@@ -135,7 +136,7 @@ QRcode::png($data, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
                             $sql = "SELECT po_items.Material, po_items.Qty, po.ProductDescription,rm.MaterialName 
                 FROM purchasing_orders po 
                 INNER JOIN po_items ON po.OrderId = po_items.OrderId 
-                INNER JOIN suppliers s ON po.SupplierId = s.SupplierId INNER JOIN raw_materials rm ON rm.LotNo=po_items.Material 
+                INNER JOIN suppliers s ON po.SupplierId = s.SupplierId INNER JOIN raw_materials rm ON rm.MaterialId=po_items.Material 
                 WHERE po.OrderId = '$orderid'";
                             
                             $result = $db->query($sql);

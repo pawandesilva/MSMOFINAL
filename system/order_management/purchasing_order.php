@@ -24,7 +24,7 @@ $breadcrumb_item_active = "purchasing order";
                             $order_name = dataClean($order_name);
 
                             $description = dataClean($description);
-                            $order_id =$row ['OrderId'];
+                            
 
                             //required validation------------------------------
                             if (empty($order_name)) {
@@ -119,12 +119,12 @@ VALUES ('$order_name', '$order_date', '$order_due_date', '$supplier_id', '$payme
                                                     <?php
                                                     //field name is not lotid it should be material
                                                     $db = dbConn();
-                                                    $sql = "SELECT LotNo ,MaterialName FROM raw_materials";
+                                                    $sql = "SELECT MaterialId ,MaterialName FROM raw_materials";
                                                     $result = $db->query($sql);
                                                     if ($result->num_rows > 0) {
                                                         while ($row = $result->fetch_assoc()) {
                                                             ?>
-                                                            <option value="<?= $row['LotNo'] ?>"><?= $row['MaterialName'] ?></option>
+                                                            <option value="<?= $row['MaterialId'] ?>"><?= $row['MaterialName'] ?></option>
                                                             <?php
                                                         }
                                                     }

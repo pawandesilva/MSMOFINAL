@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+        
         <!-- Libraries Stylesheet -->
         <link href="assets/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
         <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -30,6 +30,9 @@
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/mystyle.css" rel="stylesheet" type="text/css"/>
         <script src="assets/js/sweetalert2@11.js" type="text/javascript"></script>
+        <!--profile   -->
+        <link href="assets/css/mystyle.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
 

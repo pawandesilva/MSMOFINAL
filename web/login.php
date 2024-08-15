@@ -11,46 +11,66 @@ include '../functions.php';
                     <div class="text-center mx-auto" style="max-width: 700px;">
                         <h1 class="text-center mt-5 " style="color: #935116">MSMO</h1>
                         <h1 class="text-primary">Login</h1>
-                        <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+                        
                     </div>
                 </div>
                 <?php
-                if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     extract($_POST);
-                    
+
                     $username = dataClean($username);
-                    $message= array();
-                    
-                    if(empty($username)){
+                    $message = array();
+
+                    if (empty($username)) {
                         $message['username'] = "User Name should not be empty..!";
-                        
                     }
-                    if(empty($password)){
+                    if (empty($password)) {
                         $message['password'] = "Password should not be empty..!";
-                        
                     }
-                    if(empty($message)){
+                    if (empty($message)) {
                         $db = dbConn();
-                        $sql = "SELECT * FROM users u INNER JOIN customers c ON c.UserId=u.UserId WHERE u.UserName='$username'";
-                        $result= $db->query($sql);
-                        
-                        if($result->num_rows==1){
+                         $sql = "SELECT * FROM users u  WHERE u.UserName='$username'";
+                        $result = $db->query($sql);
+
+                        if ($result->num_rows == 1) {
                             $row = $result->fetch_assoc();
-                            
-                            if(password_verify($password, $row['Password'])){
+
+                            if (password_verify($password, $row['Password'])) {
                                 $_SESSION['USERID'] = $row['UserId'];
-                                $_SESSION['FIRSTNAME']= $row['FirstName'];
-                                
-                                header("Location:dashboard.php");
-                            }else{
+                                $_SESSION['FIRSTNAME'] = $row['FirstName'];
+                                $_SESSION['UserType'] = $row['UserType'];
+                                $user_id = $row['UserId'];
+                                //check user type 
+                                if ($_SESSION['UserType'] == 'customer') {
+
+                                    $db = dbConn();
+                                    $sql = "SELECT * FROM customers WHERE UserId= '$user_id' ";
+                                    $result = $db->query($sql);
+                                    if ($result->num_rows == 1) {
+                                        $row = $result->fetch_assoc();
+                                        $_SESSION['customerId'] = $row['CustomerId'];
+                                    }
+                                }
+                                if ($_SESSION['UserType'] == 'supplier') {
+
+                                    $db = dbConn();
+                                    $sql = "SELECT * FROM suppliers WHERE UserId= '$user_id' ";
+                                    $result = $db->query($sql);
+                                    if ($result->num_rows == 1) {
+                                        $row = $result->fetch_assoc();
+                                        $_SESSION['supplierId'] = $row['SupplierId'];
+                                    }
+                                }
+                                $dashboard = $_SESSION['UserType'] . "_dashboard.php";
+
+                                header("Location:$dashboard");
+                            } else {
                                 $message['password'] = 'Invalid username or password..!';
-                                
-                            } 
-                        }else{
-                                $message['password']= 'Invalid username or password..!';
                             }
+                        } else {
+                            $message['password'] = 'Invalid username or password..!';
                         }
-                    
+                    }
                 }
                 ?>
                 <div class="row">
@@ -76,7 +96,7 @@ include '../functions.php';
                             </div>
                     </div>
                 </div>
-                <?php
-                include 'footer.php';
-                ob_end_flush();
-                ?>
+<?php
+include 'footer.php';
+ob_end_flush();
+?>

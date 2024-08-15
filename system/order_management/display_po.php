@@ -62,7 +62,7 @@ $breadcrumb_item_active = "Display purchasing order";
                             <td><?= $row['DueDate']?></td>
                             <td><?= $row['Status']?></td>
                             
-                            <td><a href="<?= SYS_URL ?>order_management/view_purchasing_orders.php?orderid=<?= $row['OrderId']?>" class="btn btn-info"><i class="fas fa-eye"></i>   view</a></td>
+                            <td><a href="<?= SYS_URL ?>order_management/checked_purchasing_order.php?orderid=<?= $row['OrderId']?>" class="btn btn-info"><i class="fas fa-eye"></i>   view</a></td>
                             
                             
                             

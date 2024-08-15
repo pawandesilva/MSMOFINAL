@@ -11,7 +11,7 @@ include '../functions.php'; //one upon the web file the function file exist
                 <div class="col-12">
                     <div class="text-center mx-auto mt-4" style="max-width: 700px;">
                         <h1 class="text-center underlined-heading " style="color: #935116">Customer Registration</h1>
-                        <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+                        
                     </div>
                 </div>
 
@@ -89,7 +89,7 @@ include '../functions.php'; //one upon the web file the function file exist
                             //use bcrypt hashing algorithm
                             $pw = password_hash($password, PASSWORD_DEFAULT);
                             $db = dbConn();
-                            $sql= "INSERT INTO users(UserName,Password,UserType) VALUES('$user_name','$pw','customer')";//customer login with register form                            $db->query($sql);
+                            $sql= "INSERT INTO users(UserName,Password,UserType,FirstName,LastName) VALUES('$user_name','$pw','customer','$first_name','$last_name')";//customer login with register form                            $db->query($sql);
                             $user_id = $db->insert_id;
                             
                             //generate registrationno

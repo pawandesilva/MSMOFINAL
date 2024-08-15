@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="card-header">
                 <h3 class="card-title">Edit User</h3>
             </div>
-            <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+            <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="inputFirstName">First Name</label>

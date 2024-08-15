@@ -7,7 +7,18 @@ include_once 'init.php';
 $link = "Dashboard";
 $breadcrumb_item = "Home";
 $breadcrumb_item_active= "Dashboard";
+
+$db = dbConn();
+$sql = "SELECT leave_date FROM employee_leaves GROUP BY leave_date";
+$result = $db->query($sql);
+$customDates = array();
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $customDates[] = $row['leave_date'];
+    }
+}
 ?>
+
   
       
         <!-- Small boxes (Stat box) -->
@@ -594,3 +605,16 @@ include 'layouts.php';
  
  
 ?>
+       <script>
+             $(document).ready(function () {
+   $('.table').on('click', 'td[data-action="selectDay"]', function () {
+            var selectedDate = $(this).data('day'); // Get the value of the 'data-day' attribute
+            var newUrl = 'showleave.php?date=' + selectedDate;
+             // Redirect to the new page
+            window.location.href = newUrl;
+            
+            
+           
+        });
+ });
+            </script>
